@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --sidebar-width: 260px;
+        --sidebar-collapsed-width: 72px;
+        --header-height: 64px;
+        --color-primary: #ff4328;
+        --color-primary-light: #ff6b63;
+        --color-primary-dark: #e63519;
+    }
+
+    body {
+        @apply text-slate-800 antialiased;
+        font-family: 'Ubuntu', system-ui, sans-serif;
+        background-color: #FFFEFA;
+    }
+}
+
+@layer components {
+    .crm-card {
+        @apply rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md;
+    }
+
+    .crm-input {
+        @apply block w-full rounded-lg border-slate-300 text-sm shadow-sm transition-colors focus:border-primary-500 focus:ring-primary-500;
+    }
+
+    .crm-select {
+        @apply block w-full rounded-lg border-slate-300 text-sm shadow-sm transition-colors focus:border-primary-500 focus:ring-primary-500;
+    }
+
+    .crm-btn-primary {
+        @apply inline-flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50;
+    }
+
+    .crm-btn-secondary {
+        @apply inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2;
+    }
+
+    .crm-btn-danger {
+        @apply inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-red-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+    }
+
+    .crm-btn-ghost {
+        @apply inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900;
+    }
+
+    .crm-badge {
+        @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+    }
+
+    .crm-badge-success {
+        @apply crm-badge bg-emerald-100 text-emerald-800;
+    }
+
+    .crm-badge-warning {
+        @apply crm-badge bg-amber-100 text-amber-800;
+    }
+
+    .crm-badge-danger {
+        @apply crm-badge bg-red-100 text-red-800;
+    }
+
+    .crm-badge-info {
+        @apply crm-badge bg-primary-100 text-primary-700;
+    }
+
+    .crm-badge-neutral {
+        @apply crm-badge bg-slate-100 text-slate-700;
+    }
+
+    .crm-label {
+        @apply block text-sm font-medium text-slate-700;
+    }
+
+    .crm-table {
+        @apply min-w-full divide-y divide-slate-200;
+    }
+
+    .crm-table th {
+        @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500;
+    }
+
+    .crm-table td {
+        @apply whitespace-nowrap px-4 py-3.5 text-sm;
+    }
+
+    .crm-table tbody tr {
+        @apply border-b border-slate-100 transition-colors hover:bg-slate-50;
+    }
+
+    .crm-page-header {
+        @apply mb-6 flex items-center justify-between;
+    }
+
+    .crm-page-title {
+        @apply text-2xl font-bold text-slate-900;
+    }
+
+    .crm-section {
+        @apply mb-8;
+    }
+
+    .crm-section-title {
+        @apply mb-4 text-lg font-semibold text-slate-900;
+    }
+
+    .crm-stat-card {
+        @apply crm-card p-6;
+    }
+
+    .crm-stat-value {
+        @apply text-3xl font-bold text-slate-900;
+    }
+
+    .crm-stat-label {
+        @apply text-sm font-medium text-slate-500;
+    }
+
+    .kanban-column {
+        @apply flex flex-col rounded-xl border border-slate-200 bg-slate-50;
+    }
+
+    .kanban-card {
+        @apply cursor-grab rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition-all hover:shadow-md active:cursor-grabbing;
+    }
+
+    .kanban-card.dragging {
+        @apply rotate-2 opacity-90 shadow-xl;
+    }
+}
