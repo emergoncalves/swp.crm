@@ -1,58 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SWP CRM
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema de gerenciamento de relacionamento com clientes (CRM) construído com Laravel 13, Inertia.js, React e Tailwind CSS.
 
-## About Laravel
+## Funcionalidades
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Dashboard** - Visão geral de empresas, contatos, negociações e tarefas
+- **Empresas** - Gerenciamento completo de empresas (CRUD)
+- **Contatos** - Cadastro e gestão de contatos vinculados a empresas
+- **Negociações** - Pipeline de vendas com acompanhamento de etapas
+- **Tarefas** - Gestão de tarefas com vinculação a negociações
+- **Autenticação** - Sistema de login e registro de usuários
+- **Perfil** - Gerenciamento de perfil do usuário
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Backend
+- **PHP 8.3+**
+- **Laravel 13.8**
+- **Laravel Sanctum** - Autenticação via API tokens
+- **SQLite** - Banco de dados (configurável)
 
-## Learning Laravel
+### Frontend
+- **React 18** - Biblioteca de UI
+- **Inertia.js 2** - Conexão Laravel-React
+- **Tailwind CSS 3** - Framework CSS
+- **Vite 8** - Build tool
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Ferramentas de Desenvolvimento
+- **Laravel Breeze** - Scaffold de autenticação
+- **Laravel Pint** - Formatação de código PHP
+- **Ziggy** - Uso de rotas Laravel no JavaScript
+- **PHPUnit 12** - Testes automatizados
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Pré-requisitos
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- PHP 8.3 ou superior
+- Composer
+- Node.js 18+ e npm
+- SQLite (ou outro banco de dados suportado pelo Laravel)
 
-## Agentic Development
+## Instalação
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 1. Clonar o repositório
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <URL_DO_REPOSITORIO>
+cd swp-crm
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Configurar ambiente
 
-## Contributing
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Instalar dependências
 
-## Code of Conduct
+```bash
+composer install
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Configurar banco de dados
 
-## Security Vulnerabilities
+```bash
+# Criar banco SQLite
+touch database/database.sqlite
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Executar migrations
+php artisan migrate
+```
 
-## License
+### 5. Build do frontend
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+npm run build
+```
+
+## Desenvolvimento
+
+Para iniciar o servidor de desenvolvimento com todas as services necessárias:
+
+```bash
+composer dev
+```
+
+Isso irá iniciar:
+- Servidor Laravel (`php artisan serve`)
+- Fila de jobs (`php artisan queue:listen`)
+- Logs em tempo real (`php artisan pail`)
+- Build do Vite (`npm run dev`)
+
+### Scripts Disponíveis
+
+| Comando | Descrição |
+|---------|-----------|
+| `composer dev` | Inicia servidor de desenvolvimento completo |
+| `composer test` | Executa testes automatizados |
+| `npm run build` | Build de produção do frontend |
+| `npm run dev` | Servidor de desenvolvimento do Vite |
+
+## Estrutura do Projeto
+
+```
+swp-crm/
+├── app/
+│   ├── Http/Controllers/    # Controllers da aplicação
+│   ├── Models/              # Modelos Eloquent
+│   └── Providers/           # Service providers
+├── database/
+│   ├── factories/           # Factories para testes
+│   ├── migrations/          # Migrations do banco
+│   └── seeders/             # Seeders de dados
+├── docs/                    # Documentação do projeto
+├── resources/
+│   └── js/                  # Componentes React
+├── routes/                  # Definições de rotas
+└── tests/                   # Testes automatizados
+```
+
+## Rotas Principais
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/dashboard` | Dashboard principal |
+| GET/POST | `/companies` | Listar/criar empresas |
+| GET/POST | `/contacts` | Listar/criar contatos |
+| GET/POST | `/deals` | Listar/criar negociações |
+| GET/POST | `/tasks` | Listar/criar tarefas |
+| GET/PATCH | `/profile` | Gerenciar perfil |
+
+## Documentação
+
+Consulte a pasta `docs/` para documentação detalhada sobre:
+- Controllers e lógica de negócio
+- Modelos Eloquent
+- Rotas e middleware
+- Validação e requests
+- Integração Inertia/React
+- Migrations
+- Autenticação
+- CLI do Artisan
+- Providers e Services
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
